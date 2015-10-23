@@ -1,1 +1,1 @@
-vertx
+vertx 3.1
