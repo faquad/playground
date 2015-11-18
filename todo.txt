@@ -5,4 +5,6 @@ mapping:
 https://github.com/geoffreywiseman/Moo/
 http://modelmapper.org/
 http://orika-mapper.github.io
-
+http://erchu.github.io/bean-cp/ (jdk8 only)
+https://github.com/xebia-france/selma
+http://mapstruct.org
