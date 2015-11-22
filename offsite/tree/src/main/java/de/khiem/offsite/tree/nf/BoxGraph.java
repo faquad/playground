@@ -20,16 +20,17 @@ import java.util.logging.Logger;
  */
 public class BoxGraph {
     final String NODE_TYPE ="N";
-    NFBuildGraph g ;
+    NFCompressedGraph compressed ;
+    
+    NFBuildGraph  g;
     OrdinalMap<Node> nodes =new OrdinalMap<>();
     
     public BoxGraph() {
         g = createGr();
     }
     
-    private void buid() throws IOException{
+    private NFCompressedGraph buid() throws IOException{
         AtomicLong id = new AtomicLong(0);
-
         FolderNode root=new FolderNode(id.incrementAndGet(), 0l, "Root");
         addHierrchie(null, root);
         
@@ -85,6 +86,8 @@ public class BoxGraph {
 
         upwards(c, fi2);
         upwards(c, f22);
+        
+        return c;
     }
     
     private void downwards(NFCompressedGraph c, Node parent){        
@@ -99,7 +102,7 @@ public class BoxGraph {
             nodeOrd=it.nextOrdinal();
         }
     }
-    
+
     
     private void upwards(NFCompressedGraph c, Node child){        
         int cOrd = nodes.get(child);
@@ -202,8 +205,6 @@ public class BoxGraph {
         public String toString() {
             return "Node{" + "id=" + id + ", parent=" + parent + ", name=" + name + '}';
         }
-        
-        
     }
     
     
