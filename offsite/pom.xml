@@ -134,6 +134,7 @@
 	<module>quasar</module>
 	<module>redis</module>
 	<module>rx</module>
+	<module>tree</module>
     </modules>
    
 </project>
