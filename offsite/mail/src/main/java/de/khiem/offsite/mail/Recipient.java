@@ -5,5 +5,4 @@ public class Recipient {
 	static enum TYPE {
 		TO, CC,BCC
 	}
-	
 }

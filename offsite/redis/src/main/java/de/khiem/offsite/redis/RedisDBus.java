@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package de.khiem.offsite.redis;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;
-import de.khiem.offsite.utils.Utils;
+import com.google.common.base.Strings;
 import java.util.HashSet;
 import java.util.Set;
 import org.redisson.Config;
@@ -34,7 +29,7 @@ public class RedisDBus implements DBus<String> {
 
     @Override
     public void publish(String topicPath, String evt) {
-        Preconditions.checkArgument(!Utils.isNullOrEmpty(topicPath), "topicPath required");
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(topicPath), "topicPath required");
         try{
         client.getTopic(topicPath).publish(evt);
         }catch (Throwable e){
@@ -44,7 +39,7 @@ public class RedisDBus implements DBus<String> {
 
     @Override
     public void addListener(String topicPath, EventHandler<String> listerner) {
-        Preconditions.checkArgument(!Utils.isNullOrEmpty(topicPath), "topicPath required");
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(topicPath), "topicPath required");
         if (!topics.contains(topicPath)) {
             client.getTopic(topicPath).addListener(new MessageListener<Object>() {
                 @Override

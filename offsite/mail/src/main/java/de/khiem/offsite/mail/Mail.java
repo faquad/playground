@@ -7,6 +7,4 @@ public class Mail {
 	Set<Recipient> recipients;
 	String subject;
 	String content;
-	
-	
 }

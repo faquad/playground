@@ -1,8 +1,6 @@
 
 package de.khiem.offsite.rx;
 
-import de.khiem.offsite.eventLog.events.BoxEvent;
-import java.util.HashMap;
 import java.util.LinkedList;
 import rx.subjects.PublishSubject;
 
@@ -14,9 +12,6 @@ import java.util.logging.Logger;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.Subscription;
-import rx.functions.Action2;
-import rx.functions.Func0;
 import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.observables.GroupedObservable;
@@ -331,5 +326,8 @@ public class Test1 {
         public String toString() {
             return "event ["+name+ ":" + ind+ "]";
         }
+    }
+    
+    class BoxEvent {
     }
 }
