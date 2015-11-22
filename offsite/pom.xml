@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.khiem</groupId>
     <artifactId>offsite-server</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <rxjava.version>1.0.16</rxjava.version>
@@ -22,14 +23,6 @@
             <version>1.0</version>
         </dependency>
 
-
-        <!--
-        <dependency>
-                <groupId>io.vertx</groupId>
-                <artifactId>vertx-core</artifactId>
-                <version>3.0.0</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -143,5 +136,15 @@
             <id>bigqueue.repo</id>
             <url>https://raw.github.com/bulldog2011/bulldog-repo/master/repo/releases/</url>
         </repository>
-    </repositories>    
+    </repositories> 
+
+    <modules>
+	<module>db</module>
+	<module>eventlog</module>
+	<module>mail</module>
+	<module>quasar</module>
+	<module>redis</module>
+	<module>rx</module>
+    </modules>
+   
 </project>
