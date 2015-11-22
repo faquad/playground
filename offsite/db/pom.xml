@@ -13,9 +13,9 @@
     <dependencies>
         
         <dependency>
-            <groupId>org.h2database</groupId>
-            <artifactId>h2database</artifactId>
-            <version>${h2.version}</version>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
         </dependency>
         
         <dependency>

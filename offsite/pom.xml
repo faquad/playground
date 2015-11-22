@@ -19,7 +19,7 @@
         <slf4j.version>1.7.0</slf4j.version>
         <jpa.version>2.1.0</jpa.version>
         <eclipselink.version>2.6.1</eclipselink.version>
-        <h2.version>1.4.190</h2.version>
+        <hsqldb.version>1.8.0.10</hsqldb.version>
     </properties>
     <dependencies>
     <!--
