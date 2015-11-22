@@ -10,7 +10,7 @@
         <rxjava.version>1.0.16</rxjava.version>
         <rxjdbc.version>0.6.1</rxjdbc.version>
         <mysql.vesion>5.1.34</mysql.vesion>
-        <quava.versison>18.0</quava.versison>
+        <guava.versison>18.0</guava.versison>
         <bigqueue.version>0.7.0</bigqueue.version>
         <kryo.version>3.0.3</kryo.version>
         <HikariCP.version>2.4.1</HikariCP.version>
@@ -35,30 +35,30 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.34</version>
+            <version>${mysql.vesion}</version>
         </dependency>
         <dependency>
             <groupId>com.github.davidmoten</groupId>
             <artifactId>rxjava-jdbc</artifactId>
-            <version>0.6.1</version>
+            <version>${rxjdbc.version}</version>
         </dependency>
 		
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>2.4.1</version>
+            <version>${HikariCP.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.versison}</version>
         </dependency>
                 
         <dependency>
             <groupId>com.leansoft</groupId>
             <artifactId>bigqueue</artifactId>
-            <version>0.7.0</version>
+            <version>${bigqueue.version}</version>
         </dependency>
         
         <dependency>
@@ -70,19 +70,19 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
-            <version>2.1.3</version>
+            <version>${redisson.version}</version>
         </dependency>
 
         
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.0</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>co.paralleluniverse</groupId>
             <artifactId>quasar-core</artifactId>
-            <version>0.7.3</version>
+            <version>${quasar.version}</version>
             <classifier>jdk8</classifier>
         </dependency>
     </dependencies>
