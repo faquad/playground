@@ -1,4 +1,4 @@
-package de.khiem.offsite.data;
+package de.khiem.offsite.db;
 
 import com.github.davidmoten.rx.jdbc.Database;
 
