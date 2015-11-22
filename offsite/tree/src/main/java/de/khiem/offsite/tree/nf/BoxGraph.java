@@ -8,7 +8,11 @@ import com.netflix.nfgraph.spec.NFGraphSpec;
 import com.netflix.nfgraph.spec.NFNodeSpec;
 import com.netflix.nfgraph.spec.NFPropertySpec;
 import com.netflix.nfgraph.util.OrdinalMap;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,12 +23,11 @@ public class BoxGraph {
     NFBuildGraph g ;
     OrdinalMap<Node> nodes =new OrdinalMap<>();
     
-    
     public BoxGraph() {
         g = createGr();
     }
     
-    private void buid(){
+    private void buid() throws IOException{
         AtomicLong id = new AtomicLong(0);
 
         FolderNode root=new FolderNode(id.incrementAndGet(), 0l, "Root");
@@ -67,24 +70,49 @@ public class BoxGraph {
         
         
         NFCompressedGraph c = g.compress();
-        int rInd = nodes.get(root);
-        printOut(c, rInd);
-        
+        byte[] blob;
+        try(ByteArrayOutputStream os = new ByteArrayOutputStream()){
+            c.writeTo(os);
+            blob = os.toByteArray();
+            System.out.println("compressGraph size:" + blob.length);
+        }
+
+        System.out.println("downwards...");
+        downwards(c, root);
+
+        System.out.println("==============");
+        System.out.println("backwards...");
+
+        upwards(c, fi2);
+        upwards(c, f22);
     }
     
-    private void printOut(NFCompressedGraph c, int nodeId){
-        Node parent = nodes.get(nodeId);
+    private void downwards(NFCompressedGraph c, Node parent){        
+        int nodeId = nodes.get(parent);
         OrdinalIterator it = c.getConnectionIterator(NODE_TYPE, nodeId, "children");
         int nodeOrd = it.nextOrdinal();
         
         while (nodeOrd !=OrdinalIterator.NO_MORE_ORDINALS){
             Node n = nodes.get(nodeOrd);
             System.out.println("parent:" + parent.toString() + ", chilren:" + n.toString());
-            printOut(c, nodeOrd);
+            downwards(c, n);
             nodeOrd=it.nextOrdinal();
         }
     }
     
+    
+    private void upwards(NFCompressedGraph c, Node child){        
+        int cOrd = nodes.get(child);
+        OrdinalIterator it = c.getConnectionIterator(NODE_TYPE, cOrd, "parent");
+        int nodeOrd = it.nextOrdinal();
+        
+        while (nodeOrd !=OrdinalIterator.NO_MORE_ORDINALS){
+            Node n = nodes.get(nodeOrd);
+            System.out.println("node:" + child.toString() + ", parent:" + n.toString());
+            downwards(c, n);
+            nodeOrd=it.nextOrdinal();
+        }
+    }
     
     void addHierrchie(FolderNode parent, Node node){
         boolean hasparent = parent!=null;
@@ -180,9 +208,10 @@ public class BoxGraph {
     
     
     public static void main(String[] args) {
-        new BoxGraph().buid();
+        try {
+            new BoxGraph().buid();
+        } catch (IOException ex) {
+            Logger.getLogger(BoxGraph.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    
-
 }
