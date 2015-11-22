@@ -11,7 +11,13 @@
     <artifactId>db</artifactId>
     <packaging>jar</packaging>
     <dependencies>
-
+        
+        <dependency>
+            <groupId>org.h2database</groupId>
+            <artifactId>h2database</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>io.reactivex</groupId>
             <artifactId>rxjava</artifactId>
