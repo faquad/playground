@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.collections4.trie.KeyAnalyzer;
 import org.apache.commons.collections4.trie.PatriciaTrie;
 
 /**
@@ -55,13 +54,11 @@ public class Main {
             System.out.println(k + " not found");
         } else {
             System.out.println("found " + e.toString());
-            SortedMap m = t.tailMap(k);
-            System.out.println("tailmap of  " + k + ":" + m.toString());
-            SortedMap m2 = t.headMap(k);
-            System.out.println("headmap of  " + k + ":" + m2.toString());
-            
-            
-            
+            String childrenPref= k+".";
+            SortedMap m = t.prefixMap(childrenPref); // tailMap(k);
+            System.out.println("prefixmap(children) of  " + k + ":" + m.toString());
+//            SortedMap m2 = t.headMap(k);
+//            System.out.println("headmap of  " + k + ":" + m2.toString());                     
         }
     }
 
@@ -76,35 +73,8 @@ public class Main {
                 t.put(np, n);
             }
         }
-    }
-
-    
-    class KA extends KeyAnalyzer<byte[]>{
-
-        @Override
-        public int bitsPerElement() {
-            return Longs.BYTES*8;
-        }
-
-        @Override
-        public int lengthInBits(byte[] key) {
-            return key.length*8;
-        }
-
-        @Override
-        public boolean isBitSet(byte[] arg0, int arg1, int arg2) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public int bitIndex(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4, int arg5) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public boolean isPrefix(byte[] arg0, int arg1, int arg2, byte[] arg3) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
+         
+        
     }
     
     class O {
