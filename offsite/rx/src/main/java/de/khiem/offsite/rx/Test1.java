@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.observables.GroupedObservable;
@@ -170,13 +171,45 @@ public class Test1 {
         private final Subscriber<? super GroupedObservable<String, Event>> s;
         PublishSubject<Event> pub;
         
+        PublishSubject<Event> pubList;
+        
         public GR(Subscriber<? super GroupedObservable<String, Event>>  s) {
             this.s = s;
             pub =PublishSubject.create();
             pub.share();
-
             
-            Observable<GroupedObservable<String, Event>> groupBy = pub//.debounce(500, TimeUnit.MILLISECONDS)
+           pubList =PublishSubject.create();
+           pubList.share();
+           
+           
+            Observable<GroupedObservable<String, Event>> listGb = pubList.groupBy(new Func1<Event, String>() {
+                @Override
+                public String call(Event arg0) {
+                    return arg0.name;
+                }
+            });
+            Observable<List<GroupedObservable<String, Event>>> listBuffered = listGb.buffer(4000,  TimeUnit.MILLISECONDS);
+            listBuffered.subscribe(new Action1<List<GroupedObservable<String, Event>>>() {
+                @Override
+                public void call(List<GroupedObservable<String, Event>> arg0) {
+                    for (GroupedObservable<String, Event> o: arg0){
+                        System.out.println("key:" + o.getKey());
+                        o.buffer(4000, TimeUnit.MILLISECONDS)
+                                .subscribe(new Action1<List<Event>>() {
+                            @Override
+                            public void call(List<Event> arg0) {
+                                for (Event e: arg0){
+                                    System.out.println("\tgot " + e + " from buffer");
+                                }
+                            }
+                        });
+                        
+                    }
+                }
+            });
+           
+           
+           Observable<GroupedObservable<String, Event>> groupBy = pub//.debounce(500, TimeUnit.MILLISECONDS)
                     .groupBy(new Func1<Event, String>(){
                         @Override
                         public String call(Event t) {
@@ -190,7 +223,7 @@ public class Test1 {
             
             Observable<List<GroupedObservable<String, Event>>> buffered = groupBy.buffer(4000, TimeUnit.MILLISECONDS);
             
-                       
+            
             buffered.subscribe(new Subscriber<List<GroupedObservable<String, Event>>>() {
 
                 @Override
@@ -225,7 +258,8 @@ public class Test1 {
         
         
         void next(Event e){
-            pub.onNext(e);
+            pubList.onNext(e);
+            //pub.onNext(e);
         }
         
     }
