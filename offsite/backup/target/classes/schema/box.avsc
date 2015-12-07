@@ -1,0 +1,31 @@
+[
+    {
+        "namespace":"de.khiem.offsite.backup.schema",
+        "type":"record",
+        "name":"BoxUser",
+        "fields":[
+            {"name": "name", "type": "string"},
+            {"name": "id", "type": "string"}
+        ]
+    },
+    {
+        "namespace":"de.khiem.offsite.backup.schema",
+        "type":"record",
+        "name":"Folder",
+        "fields":[
+             {"name": "name", "type": "string"},
+             {"name": "id", "type": "string"},
+             {"name": "owner", "type": "BoxUser"}
+        ]
+    }
+    {
+        "namespace":"de.khiem.offsite.backup.schema",
+        "type":"record",
+        "name":"Box",
+        "fields":[
+             {"name": "name", "type": "string"},
+             {"name": "id", "type": "string"},
+             {"name": "owner", "type": "BoxUser"}
+        ]
+    }
+]
