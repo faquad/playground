@@ -15,5 +15,37 @@ public abstract  class Node {
     long created;
     
     protected Member creator;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public byte[] getName() {
+        return name;
+    }
+
+    public void setName(byte[] name) {
+        this.name = name;
+    }
+
+    public long getCreated() {
+        return created;
+    }
+
+    public void setCreated(long created) {
+        this.created = created;
+    }
+
+    public Member getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Member creator) {
+        this.creator = creator;
+    }
     
 }

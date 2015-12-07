@@ -14,4 +14,38 @@ public class Chat {
     long created;
     byte[] content;
     Member creator;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public long getCreated() {
+        return created;
+    }
+
+    public void setCreated(long created) {
+        this.created = created;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+
+    public Member getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Member creator) {
+        this.creator = creator;
+    }
+    
+    
 }

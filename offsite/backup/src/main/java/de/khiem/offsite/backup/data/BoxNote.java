@@ -11,4 +11,13 @@ package de.khiem.offsite.backup.data;
  */
 public class BoxNote extends Node{
     byte[] content;
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+    
 }

@@ -12,4 +12,22 @@ package de.khiem.offsite.backup.data;
 public class BoxFile extends Node{
     long size;
     FileLocation location;
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public FileLocation getLocation() {
+        return location;
+    }
+
+    public void setLocation(FileLocation location) {
+        this.location = location;
+    }
+    
+    
 }

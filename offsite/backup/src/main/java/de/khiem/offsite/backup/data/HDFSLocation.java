@@ -12,4 +12,22 @@ package de.khiem.offsite.backup.data;
 public class HDFSLocation implements FileLocation{
     String prefix;
     String relativePath;
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public String getRelativePath() {
+        return relativePath;
+    }
+
+    public void setRelativePath(String relativePath) {
+        this.relativePath = relativePath;
+    }
+    
+    
 }
