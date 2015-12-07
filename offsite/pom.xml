@@ -135,6 +135,7 @@
 	<module>redis</module>
 	<module>rx</module>
 	<module>tree</module>
+        <module>backup</module>
     </modules>
    
 </project>
