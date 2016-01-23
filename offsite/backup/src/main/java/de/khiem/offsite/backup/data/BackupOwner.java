@@ -83,7 +83,5 @@ public class BackupOwner {
     public void setEnterpriseSecret(byte[] enterpriseSecret) {
         this.enterpriseSecret = enterpriseSecret;
     }
-    
-    
-    
+
 }

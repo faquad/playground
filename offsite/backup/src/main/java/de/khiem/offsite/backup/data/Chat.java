@@ -9,10 +9,10 @@ package de.khiem.offsite.backup.data;
  *
  * @author kimyoung
  */
-public class Chat {
+public class Chat<T> {
     String id;
     long created;
-    byte[] content;
+    T content;
     Member creator;
 
     public String getId() {
@@ -31,11 +31,11 @@ public class Chat {
         this.created = created;
     }
 
-    public byte[] getContent() {
+    public T getContent() {
         return content;
     }
 
-    public void setContent(byte[] content) {
+    public void setContent(T content) {
         this.content = content;
     }
 
@@ -46,6 +46,4 @@ public class Chat {
     public void setCreator(Member creator) {
         this.creator = creator;
     }
-    
-    
 }

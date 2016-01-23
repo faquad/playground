@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package de.khiem.offsite.backup.data;
 
 import java.util.List;
@@ -11,11 +7,11 @@ import java.util.List;
  *
  * @author kimyoung
  */
-public class Box {
+public class Box<T> {
    
     long id;
-    byte[] name;
-    byte[] author;
+    T name;
+    T author;
     long created;
     
     BoxKey key;
@@ -37,19 +33,19 @@ public class Box {
         this.id = id;
     }
 
-    public byte[] getName() {
+    public T getName() {
         return name;
     }
 
-    public void setName(byte[] name) {
+    public void setName(T name) {
         this.name = name;
     }
 
-    public byte[] getAuthor() {
+    public T getAuthor() {
         return author;
     }
 
-    public void setAuthor(byte[] author) {
+    public void setAuthor(T author) {
         this.author = author;
     }
 
@@ -108,7 +104,4 @@ public class Box {
     public void setChats(List<Chat> chats) {
         this.chats = chats;
     }
-    
-    
-    
 }

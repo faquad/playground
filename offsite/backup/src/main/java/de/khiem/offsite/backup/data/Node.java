@@ -9,9 +9,10 @@ package de.khiem.offsite.backup.data;
  *
  * @author kimyoung
  */
-public abstract  class Node {
+public abstract  class Node<T> {
+    
     protected  long id;
-    protected byte[] name;
+    protected T name;
     long created;
     
     protected Member creator;
@@ -24,11 +25,11 @@ public abstract  class Node {
         this.id = id;
     }
 
-    public byte[] getName() {
+    public T getName() {
         return name;
     }
 
-    public void setName(byte[] name) {
+    public void setName(T name) {
         this.name = name;
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author kimyoung
  */
-public class BoxFolder extends Node{
-    List<Node> children;
-    protected byte[] desc;
+public class BoxFolder<T> extends Node{
+    List<Node<T>> children;
+    protected T desc;
 }

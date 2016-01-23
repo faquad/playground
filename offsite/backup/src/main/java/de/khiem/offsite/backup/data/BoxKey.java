@@ -16,6 +16,15 @@ public class BoxKey {
    
    //search,journal
 
+    public BoxKey() {
+    }
+
+    public BoxKey(byte[] iv, byte[] masterKey, byte[] metaKey) {
+        this.iv = iv;
+        this.masterKey = masterKey;
+        this.metaKey = metaKey;
+    }
+
     public byte[] getIv() {
         return iv;
     }

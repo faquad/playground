@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.khiem.offsite.backup.service;
+package de.khiem.offsite.backup.io;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
@@ -22,7 +22,7 @@ public class ReadWrite {
     public ReadWrite() {
     
     }
-    
+        
     public void write(Backup backup, OutputStream out) throws IOException{
         Kryo k= new Kryo();
         Output op =new Output(out);

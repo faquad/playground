@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.khiem.offsite.backup.data;
 
 /**
@@ -12,7 +7,8 @@ package de.khiem.offsite.backup.data;
 public class BoxFile extends Node{
     long size;
     FileLocation location;
-
+    FileKey key;
+    
     public long getSize() {
         return size;
     }
@@ -28,6 +24,12 @@ public class BoxFile extends Node{
     public void setLocation(FileLocation location) {
         this.location = location;
     }
-    
-    
+
+    public FileKey getKey() {
+        return key;
+    }
+
+    public void setKey(FileKey key) {
+        this.key = key;
+    }
 }
