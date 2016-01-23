@@ -214,7 +214,7 @@ public class Test1 {
                     .groupBy(new Func1<Event, String>(){
                         @Override
                         public String call(Event t) {
-                            System.out.println("call-KeySelector for :" + t);
+                            System.out.println("groupBy :" + t.name);
                             return t.name;
                         }
                     }); //.debounce(500, TimeUnit.MILLISECONDS)
@@ -241,17 +241,17 @@ public class Test1 {
                 public void onNext(List<GroupedObservable<String, Event>> t) {
                     System.out.println("\tonNext of List<GroupedObservable<String, Event>>");
                     for (GroupedObservable<String, Event> o : t){
-                         System.out.println("\t\toKey:" + o.getKey());
+                         System.out.println("\t\tGroupedObs.Key :" + o.getKey());
                          
                          o.take(4000, TimeUnit.MILLISECONDS).reduce(0, new Func2<Integer,Event,Integer>(){
                              @Override
                              public Integer call(Integer t1, Event t2) {
                                  int res = t1+t2.ind;
-                                 System.out.println("\treduce with " + t2 + ',' + t1 + ",return " + res + ",key:" + o.getKey());
+                                 System.out.println("\t\t\ttake.reduce.call with " + t2 + ',' + t1 + ",return " + res + ",key:" + o.getKey());
                                  return res;                                 
                              }
                              
-                        }).subscribe(i-> {System.out.println("Subscr.onNext->" + o.getKey() + ":" + i);});
+                        }).subscribe(i-> {System.out.println("====Reduce.Subscr.onNext->" + o.getKey() + ":" + i);});
                     }
                 }
             });
@@ -259,8 +259,8 @@ public class Test1 {
         
         
         void next(Event e){
-            pubList.onNext(e);
-            //pub.onNext(e);
+            //pubList.onNext(e);
+            pub.onNext(e);
         }
         
     }
