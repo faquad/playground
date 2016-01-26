@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.redisson.Config;
 import org.redisson.Redisson;
+import org.redisson.RedissonClient;
 import org.redisson.core.MessageListener;
 
 /**
@@ -15,7 +16,7 @@ import org.redisson.core.MessageListener;
  */
 public class RedisDBus implements DBus<String> {
 
-    private final Redisson client;
+    private final RedissonClient client;
     private final Set<String> topics;
 
     public RedisDBus(String host, int port) {
@@ -23,7 +24,7 @@ public class RedisDBus implements DBus<String> {
         conf.useSingleServer()
                 .setAddress(host + ":" + port);
 
-        client = Redisson.create(conf);
+        client = Redisson.create();
         topics = new HashSet<>();
     }
 
