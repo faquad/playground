@@ -24,6 +24,10 @@ public class PublisherImpl implements Publisher{
         return  String.format("B:%s", resourceId);
     }
     
+    private static final String SESSION_KEY(String sid){
+        return  String.format("S:%s", sid);
+    }
+    
     private static final Auth toAuth(String subject, String perm){
         return new Auth();
     }
@@ -60,11 +64,28 @@ public class PublisherImpl implements Publisher{
 
     @Override
     public Optional<Session> getSession(String sessionId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String v = conn.sync().get(SESSION_KEY(sessionId));
+        return v==null ? Optional.empty(): Optional.of(new Session(sessionId, v));
     }
 
     @Override
-    public void removeSession(Session session) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeSession(String sessionId) {
+        conn.sync().del(SESSION_KEY(sessionId));
     }
+
+    @Override
+    public void setSession(Session session) {
+        conn.sync().psetex(SESSION_KEY(session.getSessionId()), TIMEOUT,session.getSubjectId());
+    }
+
+    @Override
+    public void close() {
+        conn.close();
+        client.shutdown();
+    }
+
+    
+    
+    private static final long TIMEOUT = 1000;
+    
 }

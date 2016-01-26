@@ -13,12 +13,12 @@ import java.util.Optional;
  * @author khiemnguyen
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
             new Main().test1();
     }
    
     
-    void test1(){
+    void test1() throws Exception{
         Publisher p = new PublisherImpl("127.0.0.1", 6379);
         Auth a1= new Auth();
         a1.setPerm(new Publisher.Permission());
@@ -40,7 +40,17 @@ public class Main {
         p.removeResouce(a1.getResourceId());
         System.out.println("got a2:" + p.getAuthority(a2.getSubjectId(), a2.getResourceId()));
         
+       
+        
+        String sid1 = "sessoion1";
+        String uid = "user1";
+        p.setSession(new Publisher.Session(sid1, uid));
+        System.out.println("got session:" + p.getSession(sid1));
+        
+        Thread.sleep(2000);
+        System.out.println("got expired session:" + p.getSession(sid1));
         
         
+         p.close();
     }
 }

@@ -20,7 +20,10 @@ public interface Publisher {
     void removeResouce(String resourceId);
     
     Optional<Session> getSession(String sessionId);
-    void removeSession(Session session);
+    void setSession(Session session);
+    void removeSession(String sessionId);
+
+    void close();
     
     class Permission {
         
@@ -47,6 +50,7 @@ public interface Publisher {
         public void setResourceId(String resourceId) {
             this.resourceId = resourceId;
         }
+        
 
         public int getType() {
             return type;
@@ -62,15 +66,20 @@ public interface Publisher {
 
         public void setPerm(Permission perm) {
             this.perm = perm;
-        }
-        
-        
+        }        
     }
     
     class Session {
         String sessionId;
         String subjectId;
 
+        public Session(String sessionId, String subjectId) {
+            this.sessionId = sessionId;
+            this.subjectId = subjectId;
+        }
+
+        
+        
         public String getSessionId() {
             return sessionId;
         }
