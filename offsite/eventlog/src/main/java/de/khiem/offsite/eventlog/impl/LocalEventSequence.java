@@ -1,11 +1,11 @@
 package de.khiem.offsite.eventlog.impl;
 
-import de.khiem.offsite.eventLog.Sequence;
+import de.khiem.offsite.eventlog.Sequence;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import de.khiem.offsite.eventLog.SequenceGenerator;
+import de.khiem.offsite.eventlog.SequenceGenerator;
 
 public class LocalEventSequence implements SequenceGenerator{
 	final Map<String, AtomicLong> localDB;

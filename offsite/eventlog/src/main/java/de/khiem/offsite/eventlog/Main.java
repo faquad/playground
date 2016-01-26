@@ -1,7 +1,7 @@
 package de.khiem.offsite.eventlog;
 
-import de.khiem.offsite.eventLog.impl.BinaryQueueImpl;
-import de.khiem.offsite.eventLog.impl.LocalEventLogService;
+import de.khiem.offsite.eventlog.impl.BinaryQueueImpl;
+import de.khiem.offsite.eventlog.impl.LocalEventLogService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

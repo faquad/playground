@@ -5,10 +5,10 @@ import java.util.List;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
-import de.khiem.offsite.eventLog.Event;
-import de.khiem.offsite.eventLog.EventLogService;
-import de.khiem.offsite.eventLog.Sequence;
-import de.khiem.offsite.eventLog.SequenceGenerator;
+import de.khiem.offsite.eventlog.Event;
+import de.khiem.offsite.eventlog.EventLogService;
+import de.khiem.offsite.eventlog.Sequence;
+import de.khiem.offsite.eventlog.SequenceGenerator;
 import rx.Observable;
 
 public class LocalEventLogService implements EventLogService{
