@@ -7,14 +7,14 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <rxjava.version>1.0.16</rxjava.version>
-        <rxjdbc.version>0.6.1</rxjdbc.version>
+        <rxjava.version>1.1.0</rxjava.version>
+        <rxjdbc.version>0.7</rxjdbc.version>
         <mysql.vesion>5.1.34</mysql.vesion>
         <guava.versison>18.0</guava.versison>
         <bigqueue.version>0.7.0</bigqueue.version>
         <kryo.version>3.0.3</kryo.version>
         <HikariCP.version>2.4.1</HikariCP.version>
-        <redisson.version>2.1.4</redisson.version>
+        <redisson.version>2.2.5</redisson.version>
         <quasar.version>0.7.3</quasar.version>
         <slf4j.version>1.7.0</slf4j.version>
         <jpa.version>2.1.0</jpa.version>
@@ -22,73 +22,7 @@
         <hsqldb.version>1.8.0.10</hsqldb.version>
     </properties>
     <dependencies>
-    <!--
-        <dependency>
-            <groupId>io.reactivex</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>${rxjava.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.github.cage</groupId>
-            <artifactId>cage</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.vesion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.davidmoten</groupId>
-            <artifactId>rxjava-jdbc</artifactId>
-            <version>${rxjdbc.version}</version>
-        </dependency>
-		
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${HikariCP.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.versison}</version>
-        </dependency>
-                
-        <dependency>
-            <groupId>com.leansoft</groupId>
-            <artifactId>bigqueue</artifactId>
-            <version>${bigqueue.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.esotericsoftware</groupId>
-            <artifactId>kryo-shaded</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
-            <version>${redisson.version}</version>
-        </dependency>
-
-        
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>co.paralleluniverse</groupId>
-            <artifactId>quasar-core</artifactId>
-            <version>${quasar.version}</version>
-            <classifier>jdk8</classifier>
-        </dependency>
-    -->    
     </dependencies>
     <build>
         <plugins>
@@ -129,7 +63,7 @@
 
     <modules>
 	<module>db</module>
-	<module>eventlog</module>
+	<module>events</module>
 	<module>mail</module>
 	<module>quasar</module>
 	<module>redis</module>
