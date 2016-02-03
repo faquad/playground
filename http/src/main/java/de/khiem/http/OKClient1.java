@@ -13,11 +13,11 @@ import okhttp3.Response;
  *
  * @author khiemnguyen
  */
-public class Main1 {
+public class OKClient1 {
     
     public static void main(String[] args) {
         try {
-            new Main1().testGet();
+            new OKClient1().testGet();
         } catch (Exception ex) {
            ex.printStackTrace();
         }
