@@ -7,12 +7,16 @@ package de.khiem.http;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
-import retrofit2.Converter;
-import retrofit2.GsonConverterFactory;
+import retrofit2.Response;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.Headers;
 /**
  *
  * @author khiemnguyen
@@ -24,12 +28,29 @@ public class RestTemplates {
     public static void main(String[] args) {
         RestTemplates client = new RestTemplates();
         try {
-        client.getGithub("faquad");
+            client.getIdgard();
+        //lient.getGithub("faquad");
         }catch (Exception e){
             e.printStackTrace();
         }
     }
     
+    
+    void getIdgard() throws IOException{
+           Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.idgard.de")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                 .client(new OkHttpClient.Builder()
+                         .readTimeout(10000, TimeUnit.SECONDS)
+                         .connectTimeout(30, TimeUnit.SECONDS)
+                         .build()
+                 )
+                   
+                .build();
+        IdgardService gh = retrofit.create(IdgardService.class);
+        Response<String> res = gh.getStr().execute();
+        System.out.println("content:" + res.body());
+    }
     
     public void getGithub(String user) throws IOException{
         Retrofit retrofit = new Retrofit.Builder()
@@ -50,6 +71,12 @@ public class RestTemplates {
     Call<List<Repo>> listRepos(@Path("user") String user);
    }
    
+   
+   public interface  IdgardService {
+       @GET("rss")
+       @Headers("Accept: text/xml")
+       Call<String> getStr();
+   }
    
   public static class Repo {
      String id;
